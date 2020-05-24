@@ -1,7 +1,14 @@
+// load page listener and function with timer
+window.addEventListener('load', (event) => {
+  setTimeout(function() {init()}, 200);
+});
+
+function init() {
+
 // Assignment Code
-window.addEventListener("load", function () {
   var generateBtn = document.querySelector("#generate");
   var userLength = lengthPrompt();
+  // variables for password
   var charset = "";
   var userLowercase;
   var userUppercase;
@@ -9,11 +16,13 @@ window.addEventListener("load", function () {
   var userSpecial;
   charAlerts();
 
-  // Write password to the #password input
+  //  #password input
   function writePassword() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
 
+
+    // function that generate a password
     function generatePassword() {
       retVal = "";
       for (var i = 0, n = charset.length; i < userLength; ++i) {
@@ -24,6 +33,8 @@ window.addEventListener("load", function () {
     passwordText.value = password;
   }
 
+
+  // function at least one character type should be selected
   function charAlerts() {
     userLowercase = lowercaseConfirm();
     userUppercase = uppercaseConfirm();
@@ -35,7 +46,7 @@ window.addEventListener("load", function () {
       charAlerts();
     }
   }
-
+//  functions that meet password criteria
   function lengthPrompt() {
     var length = prompt("Password length between 8 and 128");
     //validation
@@ -80,8 +91,6 @@ window.addEventListener("load", function () {
     var n = Math.floor(Number(str));
     return n !== Infinity && String(n) === str && n >= 0;
   }
-  // Add event listener to generate button
+  // Event listener to generate button
   generateBtn.addEventListener("click", writePassword);
-
-  
-});
+}
